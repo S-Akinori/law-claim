@@ -1,1 +1,5 @@
 /* eslint @typescript-eslint/no-explicit-any: warn */
+app
+components
+hooks
+lib
