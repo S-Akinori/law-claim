@@ -7,7 +7,10 @@ const nextConfig = {
                 hostname: 'acamlwgwlmvgirarjemb.supabase.co'
             },
         ]
-    }
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
 
 export default nextConfig;

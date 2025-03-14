@@ -301,7 +301,7 @@ export const messagesApi = {
 
 // 画像関連のAPI
 export const imagesApi = {
-  async getImages(accountId) {
+  async getImages(accountId = '') {
     if (!accountId) {
       const account = await accountsApi.getAccount()
       if (!account) {
