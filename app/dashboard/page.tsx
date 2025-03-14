@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { User, MessageSquare, Settings } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { accountsApi } from "@/lib/supabase-client"
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -25,30 +26,19 @@ export default function DashboardPage() {
       return
     }
 
-    // 実際の実装ではAPIからユーザーのLINEアカウント情報を取得
-    // ここではモックデータを使用
-    const fetchAccount = async () => {
-      // モックデータ
-      const mockAccount = {
-        id: "1",
-        name: "交通事故慰謝料Bot",
-        channelId: "1234567890",
-        channelSecret: "abcdef1234567890",
-        accessToken: "ABCDEFGhijklmnopqrstuvwxyz",
-        spreadsheetId: "1a2b3c4d5e6f7g8h9i0j",
-        imageUrl: "/placeholder.svg?height=100&width=100",
-      }
+    // const fetchAccount = async () => {
+      
+    //   const account = await accountsApi.getAccount()
+    //   setAccount(account)
 
-      setAccount(mockAccount)
+    //   // 統計情報も取得
+    //   setStats({
+    //     messageCount: 4,
+    //     optionCount: 2,
+    //   })
+    // }
 
-      // 統計情報も取得
-      setStats({
-        messageCount: 4,
-        optionCount: 2,
-      })
-    }
-
-    fetchAccount()
+    // fetchAccount()
   }, [user, isLoading, router])
 
   if (isLoading) {
@@ -70,7 +60,7 @@ export default function DashboardPage() {
 
         {account ? (
           <>
-            <Card className="overflow-hidden">
+            {/* <Card className="overflow-hidden">
               <CardHeader>
                 <CardTitle>LINEアカウント情報</CardTitle>
                 <CardDescription>現在接続されているLINEアカウントの情報です</CardDescription>
@@ -94,8 +84,8 @@ export default function DashboardPage() {
                   </div>
                 </div>
               </CardContent>
-            </Card>
-
+            </Card> */}
+{/* 
             <div className="grid gap-6 md:grid-cols-2">
               <Card>
                 <CardHeader className="pb-2">
@@ -119,7 +109,7 @@ export default function DashboardPage() {
                   </Button>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
 
             <h2 className="text-2xl font-bold mt-8">クイックアクセス</h2>
             <div className="grid gap-6 md:grid-cols-3">
