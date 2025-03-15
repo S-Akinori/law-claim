@@ -77,11 +77,6 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
-      options: {
-        // rememberMeがtrueの場合、セッションを30日間保持
-        // falseの場合は1日（デフォルト）
-        expiresIn: rememberMe ? 60 * 60 * 24 * 30 : 60 * 60 * 24,
-      },
     })
     return { error }
   }
