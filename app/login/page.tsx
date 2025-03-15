@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useSupabase } from "@/components/supabase-provider"
@@ -21,7 +21,7 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(true) // デフォルトでチェック
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
+  
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
