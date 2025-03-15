@@ -109,7 +109,7 @@ export function MessageDialog({ open, onOpenChange, message, onSave, availableMe
     const newOption: MessageOption = {
       id: `opt_${Date.now()}`,
       text: "",
-      imageId: null,
+      imageId: undefined,
     }
 
     setFormData((prev) => ({
