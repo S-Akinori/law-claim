@@ -24,6 +24,7 @@ export const accountsApi = {
 
   async upsertAccount(accountData) {
     const userId = await getCurrentUserId()
+    
     const { data, error } = await supabase.from("accounts").upsert({
       ...accountData,
       user_id: userId,
@@ -49,8 +50,8 @@ export const accountsApi = {
       const appUrl = process.env.NEXT_PUBLIC_APP_URL || ""
       return {
         webhookUrl: `${appUrl}/api/line-webhook`,
-        channelSecret: account.line_channel_secret || account.channel_secret,
-        accessToken: account.line_channel_access_token || account.access_token,
+        channelSecret: account.line_channel_secret,
+        accessToken: account.line_channel_access_token,
       }
     } catch (error) {
       console.error("LINE Bot設定の取得に失敗しました", error)
@@ -61,7 +62,7 @@ export const accountsApi = {
 
 // メッセージ関連のAPI
 export const messagesApi = {
-  async getMessages(accountId) {
+  async getMessages(accountId = '') {
     try {
       // アカウントIDが指定されていない場合は取得
       if (!accountId) {
@@ -114,7 +115,7 @@ export const messagesApi = {
       }
 
       // 画像IDからURLへのマッピングを作成
-      const imageMap = {}
+      const imageMap: { [key: string]: string } = {}
       if (imagesData) {
         imagesData.forEach((image) => {
           imageMap[image.id] = image.url
